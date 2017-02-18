@@ -25,20 +25,7 @@ public class VariationsGeneratorTest {
         testByElementsGroupSizeExpectedResult(elements, 3, expectedResult);
     }
 
-/*   @Test
-    public void variations_4_2_1() {
-        final List<String> expectedResult = Arrays.asList("ab", "aa", "ac", "ba", "bc", "ca", "cb");
-        final List<String> elements = Arrays.asList("a", "b", "a", "c");
-        testByElementsGroupSizeExpectedResult(elements, 2, expectedResult);
-    }
 
-    @Test
-    public void variations_5_3_2() {
-        final List<String> expectedResult = Arrays.asList("aba", "abc", "aab", "aac", "aaa", "acb", "aca", "baa", "bac", "bca", "cab", "caa", "cba");
-        final List<String> elements = Arrays.asList("a", "b", "a", "c", "a");
-        testByElementsGroupSizeExpectedResult(elements, 3, expectedResult);
-    }
-*/
     private static void testByElementsGroupSizeExpectedResult(final Set<String> elements, final int groupSize, final List<String> expectedResult) {
         final List<String> result = TestUtil.joinCollection(Combinatory.generateVariations(elements, groupSize));
         System.out.println(result);
