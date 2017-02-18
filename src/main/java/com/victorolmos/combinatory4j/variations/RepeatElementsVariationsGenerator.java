@@ -4,7 +4,9 @@ import com.victorolmos.combinatory4j.CombinatoryGenerator;
 import com.victorolmos.combinatory4j.util.ImmutableArrayList;
 import com.victorolmos.combinatory4j.util.ImmutableCollection;
 import com.victorolmos.combinatory4j.CombinatoryCallback;
+import com.victorolmos.combinatory4j.util.ImmutableHashSet;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,10 +18,7 @@ public class RepeatElementsVariationsGenerator<T> implements CombinatoryGenerato
 
     @Override
     public void setElements(final Collection<T> elements) {
-        this.elements = new ImmutableArrayList<>();
-        for (T element : elements) {
-            this.elements.add(element);
-        }
+        this.elements = new ImmutableArrayList<>(elements);
     }
 
     public void setGroupSize(final int groupSize) {
@@ -37,7 +36,7 @@ public class RepeatElementsVariationsGenerator<T> implements CombinatoryGenerato
             callback.onNewGroup(variation);
             return;
         }
-        final ImmutableArrayList<T> usedElements = new ImmutableArrayList<>();
+        final ArrayList<T> usedElements = new ArrayList<>();
         for (T element : elements) {
             if (!usedElements.contains(element)) {
                 final ImmutableArrayList<T> nextVariation = variation.immutableAdd(element);
